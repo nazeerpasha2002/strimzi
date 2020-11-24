@@ -16,7 +16,7 @@ spec:
     camel.source.endpoint.jiraUrl: http://gvenkatx.atlassian.net/rest/api/2
     camel.component.jira.jiraUrl: http://gvenkatx.atlassian.net/rest/api/2
     camel.component.jira.username: gvenkatx@gmail.com
-    camel.component.jira.password: Myjira1718nc
+    camel.component.jira.password: 
     camel.source.endpoint.delay: 60
     camel.component.jira.delay: 60
     camel.source.endpoint.jql: jql=project=GTES
