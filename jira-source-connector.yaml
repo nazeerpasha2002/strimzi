@@ -1,0 +1,26 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  name: jira-source-connector
+  labels:
+    # The strimzi.io/cluster label identifies the KafkaConnect instance
+    # in which to create this connector. That KafkaConnect instance
+    # must have the strimzi.io/use-connector-resources annotation
+    # set to true.
+    strimzi.io/cluster: my-connect-cluster
+spec:
+  class: org.apache.camel.kafkaconnector.jira.CamelJiraSourceConnector
+  tasksMax: 1
+  topic: jira-topic
+  config:
+    camel.source.endpoint.jiraUrl: http://gvenkatx.atlassian.net/rest/api/2
+    camel.component.jira.jiraUrl: http://gvenkatx.atlassian.net/rest/api/2
+    camel.component.jira.username: gvenkatx@gmail.com
+    camel.component.jira.password: Myjira1718nc
+    camel.source.endpoint.delay: 60
+    camel.component.jira.delay: 60
+    camel.source.endpoint.jql: jql=project=GTES
+    camel.source.kafka.topic: jira-topic
+    camel.source.path.type: NEWISSUES
+    camel.proxyHost: http://http.proxy.fmr.com
+    camel.component.http.proxyPort: 8000
