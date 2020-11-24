@@ -1,6 +1,6 @@
 # strimzi
 
-Once you have a Kafka cluster up and running
+Once you have a Kafka cluster up and running \
 
 **Step 1: Download connector**
 
@@ -11,9 +11,9 @@ https://camel.apache.org/camel-kafka-connector/latest/connectors.html \
 **Example Dockerfile**
 
 
-*FROM strimzi/kafka-connect:0.11.4-kafka-2.1.0
-USER root:root
-COPY ./plugins/ /opt/kafka/plugins/
+*FROM strimzi/kafka-connect:0.11.4-kafka-2.1.0 \
+USER root:root \
+COPY ./plugins/ /opt/kafka/plugins/ \
 USER 1001* \
   
 docker build . -t \<registry>/my_kafka_connectors:test1 \
@@ -34,7 +34,7 @@ spec: \
   version: 2.6.0 \
   replicas: 1 \
   bootstrapServers: my-cluster-kafka-bootstrap:9093 \
-  image: fcr-nonprod.fmr.com/fmr-ap140435/my_kafka_connectors:test2 \
+  image: \<registry>/my_kafka_connectors:test1 \
   tls: \
     trustedCertificates: \
       - secretName: my-cluster-cluster-ca-cert \
