@@ -1,0 +1,27 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  name: db-jdbc-sink-connector
+  labels:
+    # The strimzi.io/cluster label identifies the KafkaConnect instance
+    # in which to create this connector. That KafkaConnect instance
+    # must have the strimzi.io/use-connector-resources annotation
+    # set to true.
+    strimzi.io/cluster: my-connect-cluster
+spec:
+  class: io.confluent.connect.jdbc.JdbcSinkConnector
+  tasksMax: 1
+  config:
+    connector.class: "io.confluent.connect.jdbc.JdbcSinkConnector"
+    tasks.max: 1
+    topics: telemetry.public.tmpx2
+    connection.url: "jdbc:postgresql://<db host>:5432/sinktest"
+    connection.user: "postgres"
+    connection.password: <pwd>
+    auto.create: "true"
+    insert.mode: "upsert"
+    table.name.format: "kafka_tmpx2"
+    pk.fields: "id"
+    pk.mode: "record_value"
+    transforms: unwrap
+    transforms.unwrap.type: io.debezium.transforms.ExtractNewRecordState
