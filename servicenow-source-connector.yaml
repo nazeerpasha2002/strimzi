@@ -1,0 +1,28 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  name: servicenow-source-connector
+  labels:
+    # The strimzi.io/cluster label identifies the KafkaConnect instance
+    # in which to create this connector. That KafkaConnect instance
+    # must have the strimzi.io/use-connector-resources annotation
+    # set to true.
+    strimzi.io/cluster: my-connect-cluster
+spec:
+  class: io.confluent.connect.servicenow.ServiceNowSourceConnector
+  config:
+    connector.class: "io.confluent.connect.servicenow.ServiceNowSourceConnector"
+    tasks.max: 1
+    servicenow.url: "https://dev68601.service-now.com/"
+    proxy.url: <url>:<port>
+    servicenow.table: incident
+    servicenow.user: "admin"
+    servicenow.password: <pwd>
+    servicenow.since: 2020-11-24
+    key.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    poll.interval.s: 60
+    kafka.topic: servicenow-topic
+    confluent.topic.bootstrap.servers: "my-cluster-kafka-bootstrap:9092"
+    confluent.topic.replication.factor: 1
+    confluent.license: ""
