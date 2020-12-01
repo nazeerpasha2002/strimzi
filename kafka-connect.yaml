@@ -11,7 +11,7 @@ spec:
   version: 2.6.0
   replicas: 1
   bootstrapServers: my-cluster-kafka-bootstrap:9093
-  image: fcr-nonprod.fmr.com/fmr-ap140435/my_kafka_connectors:test2
+  image: <repository>/my_kafka_connectors:test2
   tls:
     trustedCertificates:
       - secretName: my-cluster-cluster-ca-cert
