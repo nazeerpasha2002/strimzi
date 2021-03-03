@@ -22,5 +22,5 @@ spec:
     camel.source.endpoint.jql: jql=project=GTES
     camel.source.kafka.topic: jira-topic
     camel.source.path.type: NEWISSUES
-    camel.proxyHost: http://http.proxy.fmr.com
+    camel.proxyHost: http://http.com
     camel.component.http.proxyPort: 8000
